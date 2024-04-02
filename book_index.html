@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的圖書館</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+  
+    <!-- 動畫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Section 01 社群 2024/03/09 done-->
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col col-sm-6">
+                    <a class="text-white display-6 fw-900" href="#" style="text-decoration:none;">我的個人圖書館</a>
+                </div>
+                <div class="col col-sm-6 ms-auto text-end">
+                    <a href="https://www.google.com" target="_blank"><i class="fa-brands fa-google text-white m-2 mr-5 fa-2x"></i></a>
+                    <a href="https://www.books.com.tw/" target="_blank"><i class="fa-solid fa-book text-white m-2 mr-5 fa-2x"></i></a>
+                    <a href="https://aleweb.ncl.edu.tw/F/9CDY4FMTH8QKT6C7LFCTGY5KHE2EMRPG78LEAAQSMLK6LD333V-02307?&pds_handle=GUEST" target="_blank"><i class="fa-solid fa-book-open-reader text-white m-2 mr-5 fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 02 navbar-->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fa-solid fa-otter fa-2x wow animate__fadeInLeft" data-wow-duration="2s" data-wow-delay="0s"
+                    data-wow-iteration="1"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">關於我們</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../project/book_construction.html">創立緣由</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../project/book_construction.html">功能簡介</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員功能</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn01">查詢個人藏書</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn02">新增藏書</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn03">刪除藏書 </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員資料</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn04">檢視個人資料</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn05">變更暱稱</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn06">變更信箱</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn07">修改密碼</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_construction.html" id="s02_member_btn08">提升會員等級</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div>
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button id="nav_login_btn" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">登入</button>
+                        <button id="nav_reg_btn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">註冊</button>
+                        <button id="nav_logout_btn" class="btn btn-danger d-none">登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Section 02 login Model-->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">會員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="login_username" class="form-label">帳號</label>
+                        <input type="text" class="form-control" id="login_username" name="login_username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="login_password" class="form-label">密碼</label>
+                        <input type="password" class="form-control" id="login_password" name="login_password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="modal_login_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 02 register Model-->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">新會員註冊</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="timeline-section">
+                        <div class="row">
+                            <div class="col-6">
+                                <h2>會員守則</h2>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="agreement" name="agreement">
+                                    <label class="form-check-label" for="agreement">同意</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="reg_username" class="form-label">自訂帳號</label>
+                                    <input type="text" class="form-control" placeholder="帳號字數4-8" id="reg_username" name="reg_username">
+                                    <div class="valid-feedback">帳號字數符合規定</div>
+                                    <div id="chk_username" class="invalid-feedback">帳號字數不符合規定</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_password" class="form-label">自訂密碼</label>
+                                    <input type="password" class="form-control" placeholder="密碼字數5-10" id="reg_password" name="reg_password">
+                                    <div class="valid-feedback">密碼符合規則</div>
+                                    <div class="invalid-feedback">密碼不符合規則</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="con_password" class="form-label">請再次輸入密碼</label>
+                                    <input type="password" class="form-control" id="con_password" name="con_password">
+                                    <div class="valid-feedback">密碼輸入一致</div>
+                                    <div class="invalid-feedback">密碼輸入不一致</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_nickname" class="form-label">暱稱</label>
+                                    <input type="text" class="form-control is-invalid" id="reg_nickname" name="reg_nickname">
+                                    <div class="valid-feedback">已輸入</div>
+                                    <div class="invalid-feedback">請輸入暱稱，最少兩個字元</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_email" class="form-label">E-mail</label>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control col-3" placeholder="請輸入信箱" id="reg_email" name="reg_email">
+                                        <span class="input-group-text">@</span>
+                                        <input type="text" name="" id="reg_domain" list="domain_option" class="form-control disabled">
+                                        <datalist id="domain_option">
+                                            <option value="gmail.com"></option>
+                                            <option value="yahoo.com.tw"></option>
+                                            <option value="hotmail.com"></option>
+                                        </datalist>
+                                        <div class="valid-feedback">信箱輸入符合規定</div>
+                                        <div class="invalid-feedback">請輸入信箱</div>
+                                        <div id="emailFeedback" class="invalid-feedback" style="display: none;">請輸入有效的電子郵件地址</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <p for="" class="form-label">會員等級</p>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio01" name="rad" value="100" checked>
+                                        <label for="radio01" class="form-check-label">基本會員</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio02" name="rad" value="200">
+                                        <label for="radio02" class="form-check-label">進階會員</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio03" name="rad" value="300">
+                                        <label for="radio03" class="form-check-label">高級會員</label>
+                                    </div>
+                                    <div id="membershipFee" class="invalid-feedback" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary wow animate__heartBeat" data-wow-duration="1s" data-wow-delay="0s" data-wow-iteration="infinite" id="modal_reg_btn">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 03 會員藏書-->
+    <section class="d-none" id="s03">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="bookname_search" class="form-label">目前擁有的藏書數量：</label>
+                            <input type="text" class="form-control" id="show_manber_book_num" name="show_manber_book_num" disabled>
+                            <button class="btn btn-primary mt-2" id="add_to_person_btn">新增藏書</button>
+                            <button class="btn btn-danger mt-2" id="delete_person_book_btn">刪除藏書</button>
+                        </div>
+                        <div class="col-6 d-flex align-items-center">
+                            <button class="btn btn-primary justify-content-center" id="search_person_books_btn">查詢個人所有藏書</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 04 查詢書籍-->
+    <section>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <label for="bookname_search" class="form-label">查詢書籍</label>
+                    <input type="text" class="form-control" placeholder="請輸入書名" id="bookname_search" name="bookname_search">
+                    <div class="valid-feedback">字數符合規定</div>
+                    <div class="invalid-feedback">至少輸入一個字</div>
+                    <button class="btn btn-primary mt-2" id="book_search_btn">查詢</button>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Section 05 查詢書籍的結果表單-->
+    <section class="show_search d-none" id="s05_book_info">
+        <div class="container mt-5" id="">
+            <table class="table table-bordered table-striped table-sm table-hover border-danger table-rwd">
+                <caption class="text-end">查詢結果一覽表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>書名</th>
+                        <th>作者</th>
+                        <th>譯者</th>
+                        <th>類型</th>
+                        <th>出版社</th>
+                    </tr>
+                </thead>
+                <tbody id="mydata">
+                    <tr>
+                        <td>書名</td>
+                        <td>作者</td>
+                        <td>譯者</td>
+                        <td>類型</td>
+                        <td>出版社</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center" id="pageList">
+                        <li class="page-item"><a class="page-link" href="#" onclick="">1</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 06 查無相關書籍時-->
+    <section class="no_book_data d-none" id="no_book_data_info">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <p class="text-center fw-900 textcolorR">查無相關書籍資料</p>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!--計數器動畫-->
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/about_member_login_for_index.js"></script>
+    <script src="js/about_member_reg.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        var u_id;//for update
+        var newData = [];
+        var active="1";
+        var flag_bookname_input = false;
+        var flag_username_chk_uni = false;
+        $(function(){
+            $("#bookname_search").bind("input propertychange", function(){
+                var num= $(this).val().length;
+                console.log(num);
+                if($(this).val().length > 0 && $(this).val() !=""){
+                    //字數符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_bookname_input = true;
+                }else{
+                    //字數不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_bookname_input = false;
+                }
+            });
+
+            $("#book_search_btn").click(function(){
+                $("#mydata").empty();
+                $("#pageList").empty();
+                if(flag_bookname_input){
+                    
+                    console.log($("#bookname_search").val());
+
+                    var dataJSON = {};
+                    dataJSON["BookName"] = $("#bookname_search").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    $.ajax({
+                        type:"POST",
+                        url:"../project/search_basic_bookinfo_by_bookname.php",
+                        async:false,
+                        data:JSON.stringify(dataJSON),
+                        dataType:"json",
+                        success:showdata_booksearch,
+                        error:function(){
+                            alert("error-../project/search_basic_bookinfo_by_bookname.php")
+                         }
+                    });
+                }else{
+                    alert("請輸入要查詢的資料！")
+                }
+            });
+
+            $("#search_person_books_btn").click(function(){
+                location.href = "../project/book_index_login.html"
+            });
+        });
+
+        //各種function
+        function showdata_booksearch(data){
+            console.log(data);
+            // $("#mydata").empty();
+            // $("#pageList").empty();
+            if(data.data)
+            {
+                newData = []; // Reset newData array
+                
+                data.data.forEach(function(item,key){
+                    console.log(key);
+                    if(key % 8 == 0 ){
+                        newData.push([]);
+                    }
+                    var page = parseInt(key/8);
+                    newData[page].push(item);
+                });
+
+                //產生頁碼
+                $("#pageList").empty();
+                newData.forEach(function(item, key)
+                {
+                    var thisPage = key + 1;
+                    var strHTML = '<li class="page-item"><a id="page_now_'+ key +'" class="page-link" href="#" onclick="drawTable(' + key + ')">' + thisPage + '</a></li>';
+                    $("#pageList").append(strHTML);
+                });
+
+                drawTable(0)
+            }else{
+                $("#s05_book_info").addClass('d-none');
+                $("#no_book_data_info").removeClass('d-none');
+            }
+            
+        }
+
+        //畫出table
+        function drawTable(page){
+            $("#mydata").empty();
+            $("#s05_book_info").removeClass('d-none');
+            $("#no_book_data_info").addClass('d-none');
+            newData[page].forEach(function(item){
+                var strHTML = '<tr><td>' + item.BookName + '</td><td>' + item.Author + '</td><td>' + item.Translator + '</td><td>' + item.Type + '</td><td>' + item.Publisher + '</td></tr>';
+
+                $("#mydata").append(strHTML);
+            });
+
+            $(".page-link").removeClass('active');
+            var page_now = "#page_now_"+ page;
+            // console.log(page_now);
+            $(page_now).addClass('active');         
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的圖書館管理頁面</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+  
+    <!-- 動畫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Section 01 社群 2024/03/09 done-->
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col col-sm-7">
+                    <a class="text-white display-6 fw-900" href="../project/book_manager_index.html" style="text-decoration:none;">我的個人圖書館-管理頁面<i class="fa-solid fa-wrench text-white m-2 mr-5"></i></a>
+                </div>
+                <div class="col col-sm-5 ms-auto text-end">
+                    <a href="../project/book_index.html" target="_blank"><i class="fa-solid fa-house text-white m-2 mr-5 fa-2x"></i></a>                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 02 navbar-->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="../project/book_manager_index.html">
+                    <i class="fa-solid fa-otter fa-2x"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown disabled" id="member_info">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >會員資料</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../project/book_manager_check_member_info.html">資料更新及停權</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">密碼變更</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item dropdown disabled" id="book_info">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >書籍資料管理</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../project/book_manager_check_book_info.html" id="">書籍資料一覽</a></li>
+                                <li><a class="dropdown-item" href="#" id="">書籍資料建檔</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown disabled" id="still_thinking">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">還在想</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" id="">還在想</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div>
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button id="nav_login_btn" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">登入</button>
+                        <!-- <button id="nav_reg_btn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">註冊</button> -->
+                        <button id="nav_logout_btn" class="btn btn-danger d-none">登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Section 02 login Model-->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">管理員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="login_username" class="form-label">帳號</label>
+                        <input type="text" class="form-control" id="login_username" name="login_username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="login_password" class="form-label">密碼</label>
+                        <input type="password" class="form-control" id="login_password" name="login_password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="modal_login_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 03 會員資料表單-->
+    <section>
+        <div class="container mt-3 d-none" id="s03_member_info">
+            <table class="table table-bordered table-striped table-sm table-hover border-danger table-rwd">
+                <caption class="text-end">會員一覽表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>會員編號</th>
+                        <th>會員帳號</th>
+                        <th>會員暱稱</th>
+                        <th>會員信箱</th>
+                        <th>會員等級</th>
+                        <th>是否停權</th>
+                        <th>加入時間</th>
+                        <th class="text-center">更新資料</th>
+                        <th class="text-center">停權</th>
+                    </tr>
+                </thead>
+                <tbody id="mydata">
+                    <tr>
+                        <td>會員編號</td>
+                        <td>會員帳號</td>
+                        <td>會員暱稱</td>
+                        <td>會員信箱</td>
+                        <td>會員等級</td>
+                        <td>是否停權</td>
+                        <td>加入時間</td>
+                        <td>
+                            <button class="btn btn-success me-1" data-bs-toggle="modal" data-bs-target="#updateModal">更新</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger">停權</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center" id="pageList">
+                        <li class="page-item"><a class="page-link" href="#" onclick="">1</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- updateModal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-3 fw-900" id="exampleModalLabel">會員更新</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="updateModal_id" class="form-label">會員編號</label>
+                        <input type="text" name="updateModal_id" id="updateModal_id" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateModal_username" class="form-label">會員帳號</label>
+                        <input type="text" name="updateModal_username" id="updateModal_username" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateModal_nickname" class="form-label">會員暱稱</label>
+                        <input type="nickname" class="form-control" id="updateModal_nickname" name="updateModal_nickname">
+                        <div class="valid-feedback">已輸入</div>
+                        <div class="invalid-feedback">請輸入暱稱，最少兩個字元</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateModal_email" class="form-label">會員信箱</label>
+                        <input type="email" class="form-control" id="updateModal_email" name="updateModal_email">
+                        <div class="invalid-feedback">請輸入信箱</div>
+                        <div id="emailFeedback" class="invalid-feedback" style="display: none;">請輸入有效的電子郵件地址</div>
+                    </div>
+                    <div class="mb-3">
+                        <p for="" class="form-label">會員等級</p>
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="radio01" name="rad" value="100" checked>
+                                <label for="radio01" class="form-check-label addpoint">基本會員</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="radio02" name="rad" value="200">
+                                <label for="radio02" class="form-check-label addpoint">進階會員</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="radio03" name="rad" value="300">
+                                <label for="radio03" class="form-check-label addpoint">高級會員</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input disabled" id="radio04" name="rad" value="1">
+                                <label for="radio04" class="form-check-label disabled">管理員</label>
+                            </div>
+                            <div id="membershipFee" class="invalid-feedback" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="updateModal_ok_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- suspenActiveModal -->
+    <div class="modal fade" id="suspenActiveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-3 fw-900" id="exampleModalLabel">會員停權管理</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="suspenActiveModal_id" class="form-label">會員編號</label>
+                        <input type="text" name="suspenActiveModal_id" id="suspenActiveModal_id" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="suspenActiveModal_username" class="form-label">會員帳號</label>
+                        <input type="text" name="suspenActiveModal_username" id="suspenActiveModal_username" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <span>會員狀態</span>
+                        <div class="form-check form-switch mt-1">
+                            <input type="checkbox" name="suspenActiveModal_switch" id="suspenActiveModal_switch" class="form-check-input">
+                            <label for="suspenActiveModal_switch" class="form-check-label">停權</label>
+                        </div> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="suspenActiveModal_ok_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!--計數器動畫-->
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/about_manager_login.js"></script>
+    <script src="js/about_manager_update_member_info.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        var u_id;//for update
+        var newData = [];
+        var user_level;
+        var actived;
+        //因為資料是由資料庫而來，一般來說是符合的
+        var flag_email = true;
+        var flag_nickname = true;       
+    </script>
+</body>
+</html>

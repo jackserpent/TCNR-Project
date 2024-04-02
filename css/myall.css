@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+:root {
+    --mycolor01: #FFD954;
+    --mycolor02: #E4B660;
+    --mycolor03: #F2AB39;
+    --mycolor04: #69491A;
+    --mycolor05: #E5BB4B;
+    --mycolor06: #7BC5AE;
+    --mycolor07: #85B8CB;
+    --wtmcolor:#FEF29E;
+    --white: white;
+    --black: black;
+    --red:red;
+    --green:green;
+    --blue:blue;
+    --clear01:rgba(0,0,0,0.1);/*第四個參數是透明度，參數為0~1之間，數值越小透明度越高*/
+    --clear02:rgba(0,0,0,0.2);
+    --clear03:rgba(0,0,0,0.3);
+    --clear05:rgba(0,0,0,0.5);
+    --clear08:rgba(0,0,0,0.8);
+
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-100 {
+    font-weight: 100;
+}
+
+.mr-1{
+    margin-right: 1px;
+}
+
+.mr-2{
+    margin-right: 2px;
+}
+
+.mr-3{
+    margin-right: 3px;
+}
+
+.mr-4{
+    margin-right: 4px;
+}
+
+.mr-5{
+    margin-right: 5px;
+}
+
+.textcolorW{
+    color:var(--white);
+}
+
+.textcolorB{
+    color:var(--black);
+}
+
+.textcolorR{
+    color:var(--red);
+}
+
+.textcolorG{
+    color:var(--green);
+}
+
+.textcolorBlue{
+    color:var(--blue);
+}
+
+.bg_cover{
+    background-position: center center;
+    background-size: cover;
+}
+
+.demo{
+    width: 80%;
+    padding: 25px;
+    margin: 25px;
+    border: 2px solid var(--mycolor04);
+}

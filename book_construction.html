@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>施工中</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .section01{
+            background-color: var(--wtmcolor);
+            height: 100vh;
+            position: relative;
+        }
+        .section01 .center_img{
+            position: absolute;
+            background-color: var(--mycolor06);
+            top:30px;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            background-image: url(images/construction01.jpg);
+            background-position:center center;
+            background-size: cover;
+            background-attachment: fixed;/*背景圖片不隨著視窗上下移動而移動，形成類似透過窗戶觀看背景圖片的感覺*/
+        }
+        .section01 .user_text{
+            /* background-color: var(--mycolor07); */
+            position: absolute;
+            top:50%;/*元件距離上方50%*/
+            left:50%;/*元件距離左邊50%，但是整體文字左右距離就可能不會是對稱的，因此不是真的置中*/
+            transform: translateX(-50%);/*因為要使文字真的左右置中，因次套用這個公式，在X軸往回推50%*/
+            text-align: center;
+            background-color: var(--clear05);/*通常為了避免背景圖片的顏色造成文字閱讀困難，因此常常會給文字一個背景色，但是這個背景色是一個有透明度的顏色方塊*/
+            padding: 10px;
+            border-radius: 20px;/*在邊界產生圓角*/
+            box-shadow: 5px 5px 50px 1px var(--white);/*五個參數，X軸、Y軸、羽化程度、厚度及顏色*/
+        }
+    </style>
+</head>
+<body>
+    <div class="section01">
+        <div class="center_img"></div>
+        <div class="user_text">
+            <h1 class="fw-900 textcolorR">網頁施工中</h1>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/w3.js"></script>
+    <script>
+      w3.includeHTML();
+    </script>
+</body>
+</html>

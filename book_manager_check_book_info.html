@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的圖書館管理頁面</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+  
+    <!-- 動畫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Section 01 社群 2024/03/09 done-->
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col col-sm-7">
+                    <a class="text-white display-6 fw-900" href="../project/book_manager_index.html" style="text-decoration:none;">我的個人圖書館-管理頁面<i class="fa-solid fa-wrench text-white m-2 mr-5"></i></a>
+                </div>
+                <div class="col col-sm-5 ms-auto text-end">
+                    <a href="../project/book_index.html" target="_blank"><i class="fa-solid fa-house text-white m-2 mr-5 fa-2x"></i></a>                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 02 navbar-->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="../project/book_manager_index.html">
+                    <i class="fa-solid fa-otter fa-2x"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown disabled" id="member_info">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >會員資料</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../project/book_manager_check_member_info.html">資料更新及停權</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">密碼變更</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item dropdown disabled" id="book_info">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >書籍資料管理</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" id="">書籍資料一覽</a></li>
+                                <li><a class="dropdown-item" href="#" id="">書籍資料建檔</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown disabled" id="still_thinking">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">還在想</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" id="">還在想</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div>
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button id="nav_login_btn" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">登入</button>
+                        <!-- <button id="nav_reg_btn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">註冊</button> -->
+                        <button id="nav_logout_btn" class="btn btn-danger d-none">登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Section 02 login Model-->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">管理員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="login_username" class="form-label">帳號</label>
+                        <input type="text" class="form-control" id="login_username" name="login_username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="login_password" class="form-label">密碼</label>
+                        <input type="password" class="form-control" id="login_password" name="login_password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="modal_login_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 04 basic book info -->
+    <section>
+        <div class="container mt-3" id="s04_book_info">
+            <table class="table table-bordered table-striped table-sm table-hover border-danger table-rwd">
+                <caption class="text-end">會員一覽表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>書名</th>
+                        <th>作者</th>
+                        <th>譯者</th>
+                        <th>類型</th>
+                        <th>出版社</th>
+                        <th>出版日期</th>
+                        <th>建檔會員</th>
+                        <th>建檔時間</th>
+                        <th class="text-center">詳細資料</th>
+                        <th class="text-center">更新資料</th>
+                    </tr>
+                </thead>
+                <tbody id="mydata">
+                    <tr>
+                        <td>書名</td>
+                        <td>作者</td>
+                        <td>譯者</td>
+                        <td>類型</td>
+                        <td>出版社</td>
+                        <td>出版日期</td>
+                        <td>建檔會員</td>
+                        <td>建檔時間</td>
+                        <td class="text-center">
+                            <button class="btn btn-success me-1" data-bs-toggle="modal" data-bs-target="#updateModal">詳細資料</button>
+                        </td>
+                        <td class="text-center">
+                            <button class="btn btn-danger">更新</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center" id="pageList">
+                        <li class="page-item"><a class="page-link" href="#" onclick="">1</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!--計數器動畫-->
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/about_manager_login.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+    <script>
+        var u_id;//for update
+        var newData = [];
+        $(function(){
+            //讀取書籍資料
+            $.ajax({
+                type:"GET",
+                url:"../project/read_all_basic_bookinfo.php",
+                async:false,
+                dataType:"json",
+                success:showdata_bookinfo,
+                error:function(){
+                    alert("error-../project/read_all_basic_bookinfo.php")
+                }
+            });
+        });
+
+        //各種function
+
+        //秀出資料
+        function showdata_bookinfo(data){
+            console.log(data);
+            data.data.forEach(function(item,key){
+                console.log(key);
+                if(key % 10 == 0 ){
+                    newData.push([]);
+                }
+                var page = parseInt(key/10);
+                newData[page].push(item);
+            });
+
+            //產生頁碼
+            $("#pageList").empty();
+            newData.forEach(function(item, key)
+            {
+                var thisPage = key + 1;
+                var strHTML = '<li class="page-item"><a id="page_now_'+ key +'" class="page-link" href="#" onclick="drawTable(' + key + ')">' + thisPage + '</a></li>';
+                $("#pageList").append(strHTML);
+            });
+
+            drawTable(0)
+        }
+
+        //畫出table
+        function drawTable(page){
+            $("#mydata").empty();
+            newData[page].forEach(function(item){
+                var strHTML = '<tr><td>' + item.BookName + '</td><td>' + item.Author + '</td><td>' + item.Translator + '</td><td>' + item.Type + '</td><td>' + item.Publisher + '</td><td>' + item.PublishedDate + '</td><td>' + item.Created_by + '</td><td>' + item.Created_at + '</td><td class="text-center"><button class="btn btn-success me-1" data-bs-toggle="modal" data-bs-target="#updateModal">詳細資料</button></td><td class="text-center"><button class="btn btn-danger">更新</button></td></tr>';
+
+                $("#mydata").append(strHTML);
+            });
+            $(".page-link").removeClass('active');
+            var page_now = "#page_now_"+ page;
+            // console.log(page_now);
+            $(page_now).addClass('active');         
+        }
+    </script>
+
+</body>
+</html>

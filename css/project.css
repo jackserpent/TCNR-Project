@@ -1,0 +1,12 @@
+.fa-otter {
+    color: var(--wtmcolor);
+}
+
+#mydata .suspen_text{
+    color: var(--red);
+    font-weight: 700;
+}
+
+.disabled {
+    pointer-events: none;
+}

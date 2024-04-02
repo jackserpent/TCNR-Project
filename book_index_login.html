@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的圖書館</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+  
+    <!-- 動畫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Section 01 社群 2024/03/09 done-->
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col col-sm-6">
+                    <a class="text-white display-6 fw-900" href="#" style="text-decoration:none;">我的個人圖書館</a>
+                </div>
+                <div class="col col-sm-6 ms-auto text-end">
+                    <a href="https://www.google.com" target="_blank"><i class="fa-brands fa-google text-white m-2 mr-5 fa-2x"></i></a>
+                    <a href="https://www.books.com.tw/" target="_blank"><i class="fa-solid fa-book text-white m-2 mr-5 fa-2x"></i></a>
+                    <a href="https://aleweb.ncl.edu.tw/F/9CDY4FMTH8QKT6C7LFCTGY5KHE2EMRPG78LEAAQSMLK6LD333V-02307?&pds_handle=GUEST" target="_blank"><i class="fa-solid fa-book-open-reader text-white m-2 mr-5 fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 02 navbar-->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fa-solid fa-otter fa-2x wow animate__fadeInLeft" data-wow-duration="2s" data-wow-delay="0s"
+                    data-wow-iteration="1"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">關於我們</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../project/book_skywindows.html">創立緣由</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../project/book_skywindows.html">功能簡介</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員功能</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" href="#" id="s02_member_btn01">查詢個人藏書</a></li>
+                                <li><a class="dropdown-item disabled" href="#" id="s02_member_btn02"  data-bs-toggle="modal" data-bs-target="#addNewBookModal">新增藏書</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_skywindows.html" id="s02_member_btn03">刪除藏書 </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">會員資料</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item disabled" href="../project/book_skywindows.html" id="s02_member_btn04">檢視個人資料</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_skywindows.html" id="s02_member_btn05">變更暱稱</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_skywindows.html" id="s02_member_btn06">變更信箱</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_skywindows.html" id="s02_member_btn07">修改密碼</a></li>
+                                <li><a class="dropdown-item disabled" href="../project/book_skywindows.html" id="s02_member_btn08">提升會員等級</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div>
+                        <span class="text-warning h3" id="user_message"></span>
+                        <button id="nav_login_btn" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">登入</button>
+                        <button id="nav_reg_btn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">註冊</button>
+                        <button id="nav_logout_btn" class="btn btn-danger d-none">登出</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Section 02 login Model-->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">會員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="login_username" class="form-label">帳號</label>
+                        <input type="text" class="form-control" id="login_username" name="login_username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="login_password" class="form-label">密碼</label>
+                        <input type="password" class="form-control" id="login_password" name="login_password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="modal_login_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 02 register Model-->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">新會員註冊</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="timeline-section">
+                        <div class="row">
+                            <div class="col-6">
+                                <h2>會員守則</h2>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <p>一笑批評主流圖片士兵房產驚人麻煩低價代理使得留下事件給他規模，閲讀出版社出版這次阿宅人民共和國，說。</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="agreement" name="agreement">
+                                    <label class="form-check-label" for="agreement">同意</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="reg_username" class="form-label">自訂帳號</label>
+                                    <input type="text" class="form-control" placeholder="帳號字數4-8" id="reg_username" name="reg_username">
+                                    <div class="valid-feedback">帳號字數符合規定</div>
+                                    <div id="chk_username" class="invalid-feedback">帳號字數不符合規定</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_password" class="form-label">自訂密碼</label>
+                                    <input type="password" class="form-control" placeholder="密碼字數5-10" id="reg_password" name="reg_password">
+                                    <div class="valid-feedback">密碼符合規則</div>
+                                    <div class="invalid-feedback">密碼不符合規則</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="con_password" class="form-label">請再次輸入密碼</label>
+                                    <input type="password" class="form-control" id="con_password" name="con_password">
+                                    <div class="valid-feedback">密碼輸入一致</div>
+                                    <div class="invalid-feedback">密碼輸入不一致</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_nickname" class="form-label">暱稱</label>
+                                    <input type="text" class="form-control is-invalid" id="reg_nickname" name="reg_nickname">
+                                    <div class="valid-feedback">已輸入</div>
+                                    <div class="invalid-feedback">請輸入暱稱，最少兩個字元</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_email" class="form-label">E-mail</label>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control col-3" placeholder="請輸入信箱" id="reg_email" name="reg_email">
+                                        <span class="input-group-text">@</span>
+                                        <input type="text" name="" id="reg_domain" list="domain_option" class="form-control disabled">
+                                        <datalist id="domain_option">
+                                            <option value="gmail.com"></option>
+                                            <option value="yahoo.com.tw"></option>
+                                            <option value="hotmail.com"></option>
+                                        </datalist>
+                                        <div class="valid-feedback">信箱輸入符合規定</div>
+                                        <div class="invalid-feedback">請輸入信箱</div>
+                                        <div id="emailFeedback" class="invalid-feedback" style="display: none;">請輸入有效的電子郵件地址</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <p for="" class="form-label">會員等級</p>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio01" name="rad" value="100" checked>
+                                        <label for="radio01" class="form-check-label">基本會員</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio02" name="rad" value="200">
+                                        <label for="radio02" class="form-check-label">進階會員</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio03" name="rad" value="300">
+                                        <label for="radio03" class="form-check-label">高級會員</label>
+                                    </div>
+                                    <div id="membershipFee" class="invalid-feedback" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary wow animate__heartBeat" data-wow-duration="1s" data-wow-delay="0s" data-wow-iteration="infinite" id="modal_reg_btn">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 03 會員藏書-->
+    <section class="d-none" id="s03">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="bookname_search" class="form-label" >目前擁有的藏書數量：</label>
+                            <input type="text" class="form-control" id="show_manber_book_num" name="show_manber_book_num" disabled>
+                            <button class="btn btn-primary mt-2" id="add_new_book_btn" data-bs-toggle="modal" data-bs-target="#addNewBookModal">新增藏書</button>
+                            <button class="btn btn-danger mt-2" id="delete_personal_book_btn">刪除藏書</button>
+                        </div>
+                        <div class="col-6 d-flex align-items-center">
+                            <button class="btn btn-primary justify-content-center" id="search_person_books_btn">查詢個人所有藏書</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-secondary justify-content-end d-none" id="go_back">回上一頁</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 04 查詢書籍-->
+    <section class="search_books" id="s04_search_books">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <label for="bookname_search" class="form-label">查詢書籍</label>
+                    <input type="text" class="form-control" placeholder="請輸入書名" id="bookname_search" name="bookname_search">
+                    <div class="valid-feedback">字數符合規定</div>
+                    <div class="invalid-feedback">至少輸入一個字</div>
+                    <button class="btn btn-primary mt-2" id="book_search_btn">查詢</button>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 05 查詢書籍的結果表單-->
+    <section class="show_search d-none" id="s05_book_info">
+        <div class="container mt-5" id="">
+            <table class="table table-bordered table-striped table-sm table-hover border-danger table-rwd">
+                <caption class="text-end">查詢結果一覽表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>書名</th>
+                        <th>作者</th>
+                        <th>譯者</th>
+                        <th>類型</th>
+                        <th>出版社</th>
+                        <th class="text-center" id="add_to_person_th">新增至個人藏書</th>
+                    </tr>
+                </thead>
+                <tbody id="s05_mydata">
+                    <tr>
+                        <td>書名</td>
+                        <td>作者</td>
+                        <td>譯者</td>
+                        <td>類型</td>
+                        <td>出版社</td>
+                        <td><button class="btn btn-success">新增</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center" id="s05_pageList">
+                        <li class="page-item"><a class="page-link" href="#" onclick="">1</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 06 查無相關書籍時-->
+    <section class="no_book_data d-none" id="s06_no_book_data_info">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <p class="text-center fw-900 textcolorR">查無相關書籍資料</p>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 07 查詢書籍的結果表單-->
+    <section class="show_personal_books d-none" id="s07_show_personal_books">
+        <div class="container mt-5" id="">
+            <table class="table table-bordered table-striped table-sm table-hover border-danger table-rwd">
+                <caption class="text-end">查詢結果一覽表</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>書名</th>
+                        <th>作者</th>
+                        <th>譯者</th>
+                        <th>類型</th>
+                        <th>出版社</th>
+                        <th>購買日期</th>
+                        <th class="text-center" id="">詳細資料</th>
+                    </tr>
+                </thead>
+                <tbody id="s07_mydata">
+                    <tr>
+                        <td>書名</td>
+                        <td>作者</td>
+                        <td>譯者</td>
+                        <td>類型</td>
+                        <td>出版社</td>
+                        <td>購買日期</td>
+                        <td class="text-center"><button class="btn btn-primary">查看</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center" id="s07_pageList">
+                        <li class="page-item"><a class="page-link" href="#" onclick="">1</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 08 當個人藏書是全空的時候顯示-->
+    <section class="no_book_data d-none" id="s08_no_personal_book_data_info">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <p class="text-center fw-900 textcolorR">尚未建立個人書籍資料</p>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 09 現有書籍新增到個人-->    
+    <!-- Modal addToPersonalModal-->
+    <div class="modal fade" id="addToPersonalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">從既有的書籍資料新增至個人藏書</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="book_basic_info-tab" data-bs-toggle="tab" data-bs-target="#book_basic_info" type="button" role="tab" aria-controls="book_basic_info" aria-selected="true">書籍的基本資料</button>
+                            <button class="nav-link" id="book_persomal_info-tab" data-bs-toggle="tab" data-bs-target="#book_persomal_info" type="button" role="tab" aria-controls="book_persomal_info" aria-selected="false">書籍的個人資料</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="book_basic_info" role="tabpanel" aria-labelledby="book_basic_info-tab" tabindex="0">
+                            <div class="container">
+                                <p class="mt-3">書籍共通基本資料表單</p>
+                                <div class="row">
+                                    <div class="p-3 rounded-3 border border-2 border-dark shadow-lg">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="s09_bookid" class="form-label">書籍編號</label>
+                                                    <input type="text" name="s09_bookid" id="s09_bookid" class="form-control" disabled>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_bookname" class="form-label">書籍名稱</label>
+                                                    <input type="text" class="form-control" id="s09_bookname" name="s09_bookname" disabled>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_author" class="form-label">作者</label>
+                                                    <input type="text" class="form-control" id="s09_author" name="s09_author" disabled>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_translator" class="form-label">譯者</label>
+                                                    <input type="text" class="form-control" id="s09_translator" name="s09_translator" disabled>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_type" class="form-label">類型</label>
+                                                    <input type="text" class="form-control" id="s09_type" name="s09_type" disabled>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_publisher" class="form-label">出版社</label>
+                                                    <input type="text" class="form-control" id="s09_publisher" name="s09_publisher" disabled>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_publisheddate" class="form-label">出版日期</label>
+                                                    <input type="text" class="form-control" id="s09_publisheddate" name="s09_publisheddate" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="s09_page" class="form-label">頁數</label>
+                                                    <input type="text" class="form-control" id="s09_page" name="s09_page" disabled>    
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_booklength" class="form-label">書本長度(cm)</label>
+                                                    <input type="text" class="form-control" id="s09_booklength" name="s09_booklength" disabled>    
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_bookwidth" class="form-label">書本寬度(cm)</label>
+                                                    <input type="text" class="form-control" id="s09_bookwidth" name="s09_bookwidth" disabled>    
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_bookthick" class="form-label">書本厚度(cm)</label>
+                                                    <input type="text" class="form-control" id="s09_bookthick" name="s09_bookthick" disabled>    
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_created_by" class="form-label">建檔人員</label>
+                                                    <input type="text" class="form-control" id="s09_created_by" name="s09_created_by" disabled>    
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_created_at"class="form-label">建檔日期</label>
+                                                    <input type="text" class="form-control" id="s09_created_at" name="s09_created_at" disabled>
+                                                </div>
+                                            </div>                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="book_persomal_info" role="tabpanel" aria-labelledby="book_persomal_info-tab" tabindex="0">
+                            <div class="container">
+                                <p class="mt-3">該書籍的個人資料表單</p>
+                                <div class="row">
+                                    <div class="p-3 rounded-3 border border-2 border-dark shadow-lg">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="s09_buydate" class="form-label">購買日期</label>
+                                                    <input type="date" name="s09_buydate" id="s09_buydate" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="s09_buyamount" class="form-label">購買金額(NT)</label>
+                                                    <input type="number" min="1" max="10000" value="50" class="form-control" id="s09_buyamount" name="s09_buyamount">
+                                                    <div class="valid-feedback">價格設定符合規定</div>
+                                                    <div class="invalid-feedback">價格設定不符合規定(1-10000)</div>    
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="s09_buynum" class="form-label">購買數量(本)</label>
+                                                    <input type="number" min="1" max="1000" value="1" class="form-control" id="s09_buynum" name="s09_buynum">
+                                                    <div class="valid-feedback">數量設定符合規定</div>
+                                                    <div class="invalid-feedback">數量設定不符合規定(1-1000)</div>    
+                                                </div>
+                                                <p>是否已讀</p>
+                                                <!-- <label for="" class="form-label">是否已讀</label> -->
+                                                <div class="form-check form-switch">
+                                                    <input type="checkbox" name="s09_readed" id="s09_readed" class="form-check-input">
+                                                    <label for="s09_readed" class="form-check-label">未讀</label>
+                                                </div>
+                                            </div>                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-success" id="add_to_personal_modal_ok_btn">新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 10 全新書籍資料建立並新增到個人-->
+    <!-- Modal addNewBookModal-->
+    <div class="modal fade" id="addNewBookModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">從零建立書籍資料，接著新增至個人藏書</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="book_basic_info_empty-tab" data-bs-toggle="tab" data-bs-target="#book_basic_info_empty" type="button" role="tab" aria-controls="book_basic_info_empty" aria-selected="true"><span class="textcolorBlue">書籍的基本資料</span></button>
+                        <button class="nav-link disabled" id="book_persomal_info_empty-tab" data-bs-toggle="tab" data-bs-target="#book_persomal_info_empty" type="button" role="tab" aria-controls="book_persomal_info_empty" aria-selected="false"><span id="s10_personal_book_info_tabs" class="textcolorR">書籍的個人資料</span></button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="book_basic_info_empty" role="tabpanel" aria-labelledby="book_basic_info_empty-tab" tabindex="0">
+                        <div class="container">
+                            <p class="mt-3">書籍共通基本資料表單</p>
+                            <div class="row">
+                                <div class="p-3 rounded-3 border border-2 border-dark shadow-lg">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="s10_bookname" class="form-label">書籍名稱</label>
+                                                <input type="text" class="form-control" id="s10_bookname" name="s10_bookname">
+                                                <div class="valid-feedback">字數符合規定</div>
+                                                <div id="s10_chk_bookname" class="invalid-feedback">已有類似書籍資料，歡迎使用</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_author" class="form-label">作者</label>
+                                                <input type="text" class="form-control" id="s10_author" name="s10_author">
+                                                <div class="valid-feedback">字數符合規定</div>
+                                                <div class="invalid-feedback">字數不符合規定</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_translator" class="form-label">譯者</label>
+                                                <input type="text" class="form-control" id="s10_translator" name="s10_translator">
+                                                <div class="valid-feedback">字數符合規定</div>
+                                                <div class="invalid-feedback">字數不符合規定</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_type" class="form-label">類型</label>
+                                                <input type="text" class="form-control" id="s10_type" name="s10_type">
+                                                <div class="valid-feedback">字數符合規定</div>
+                                                <div class="invalid-feedback">字數不符合規定</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_publisher" class="form-label">出版社</label>
+                                                <input type="text" class="form-control" id="s10_publisher" name="s10_publisher">
+                                                <div class="valid-feedback">字數符合規定</div>
+                                                <div class="invalid-feedback">字數不符合規定</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_publisheddate" class="form-label">出版日期</label>
+                                                <input type="date" class="form-control" id="s10_publisheddate" name="s10_publisheddate">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="s10_page" class="form-label">頁數</label>
+                                                <input type="number" min="1" max="5000" value="250" class="form-control" id="s10_page" name="s10_page">
+                                                <div class="valid-feedback">頁數符合規定</div>
+                                                <div class="invalid-feedback">頁數不符合規定(1-5000)</div>    
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_booklength" class="form-label">書本長度(cm)</label>
+                                                <input type="text" class="form-control" id="s10_booklength" name="s10_booklength">
+                                                <div class="valid-feedback">長度符合規定</div>
+                                                <div class="invalid-feedback">長度不符合規定</div>    
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_bookwidth" class="form-label">書本寬度(cm)</label>
+                                                <input type="text" class="form-control" id="s10_bookwidth" name="s10_bookwidth">
+                                                <div class="valid-feedback">寬度符合規定</div>
+                                                <div class="invalid-feedback">寬度不符合規定</div>    
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_bookthick" class="form-label">書本厚度(cm)</label>
+                                                <input type="text" class="form-control" id="s10_bookthick" name="s10_bookthick">
+                                                <div class="valid-feedback">厚度符合規定</div>
+                                                <div class="invalid-feedback">厚度不符合規定</div>    
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_created_by" class="form-label">建檔人員</label>
+                                                <input type="text" class="form-control" id="s10_created_by" name="s10_created_by" disabled>    
+                                            </div>
+                                        </div>                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary" id="add_book_modal_creat_basic_bookinfo_btn">新增書籍基本資料</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="book_persomal_info_empty" role="tabpanel" aria-labelledby="book_persomal_info_empty-tab" tabindex="0">
+                        <div class="container">
+                            <p class="mt-3">該書籍的個人資料表單</p>
+                            <div class="row">
+                                <div class="p-3 rounded-3 border border-2 border-dark shadow-lg">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="s10_buydate" class="form-label">購買日期</label>
+                                                <input type="date" name="s10_buydate" id="s10_buydate" class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="s10_buyamount" class="form-label">購買金額(NT)</label>
+                                                <input type="number" min="1" max="10000" value="50" class="form-control" id="s10_buyamount" name="s10_buyamount">
+                                                <div class="valid-feedback">價格設定符合規定</div>
+                                                <div class="invalid-feedback">價格設定不符合規定(1-10000)</div>    
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="s10_buynum" class="form-label">購買數量(本)</label>
+                                                <input type="number" min="1" max="1000" value="1" class="form-control" id="s10_buynum" name="s10_buynum">
+                                                <div class="valid-feedback">數量設定符合規定</div>
+                                                <div class="invalid-feedback">數量設定不符合規定(1-1000)</div>    
+                                            </div>
+                                            <p>是否已讀</p>
+                                            <div class="form-check form-switch">
+                                                <input type="checkbox" name="s10_readed" id="s10_readed" class="form-check-input">
+                                                <label for="s10_readed" class="form-check-label">未讀</label>
+                                            </div>
+                                        </div>                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-success" id="add_book_modal_creat_personal_bookinfo_btn">新增個人書籍資料</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="textcolorR fw-900">請先進行「書籍的基本資料」新增，之後再進行「書籍的個人資料」新增</p>
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success" id="add_to_personal_modal_ok_btn">新增</button> -->
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!--計數器動畫-->
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/about_member_login.js"></script>
+    <script src="js/about_member_reg.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        var user_id;//for update
+        var book_id;
+        var nickname;
+        var for_data_userid_use;
+        var for_created_by_use;
+        var s05_newData = [];
+        var s07_newData = [];
+        var flag_bookname_search_input = false;
+        var selected_buydate;
+        var flag_bookname = false;
+        var flag_author = false;
+        var flag_translator = false;
+        var flag_type = false;
+        var flag_publisher =false;
+        var flag_publisheddate = false;
+        var flag_page = true;//因為有初始值
+        var flag_booklength = false;
+        var flag_bookwidth = false;
+        var flag_bookthick = false;
+        var flag_buydate = false;
+        var flag_buynum = true;//因為有初始值
+        var flag_buyamount = true;//因為有初始值
+        var readed = "0";
+        var flag_readed = false;
+        $(function(){
+            $("#bookname_search").bind("input propertychange", function(){
+                var num= $(this).val().length;
+                console.log(num);
+                if($(this).val().length > 0 && $(this).val() !=""){
+                    //字數符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_bookname_search_input = true;
+                }else{
+                    //字數不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_bookname_search_input = false;
+                }
+            });
+
+            //一般查詢書籍
+            $("#book_search_btn").click(function(){
+                $("#s05_mydata").empty();
+                $("#s05_pageList").empty();
+                if(flag_bookname_search_input){
+                    
+                    console.log($("#bookname_search").val());
+
+                    var dataJSON = {};
+                    dataJSON["BookName"] = $("#bookname_search").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    $.ajax({
+                        type:"POST",
+                        url:"../project/search_basic_bookinfo_by_bookname.php",
+                        async:false,
+                        data:JSON.stringify(dataJSON),
+                        dataType:"json",
+                        success:showdata_booksearch,
+                        error:function(){
+                            alert("error-../project/search_basic_bookinfo_by_bookname.php")
+                         }
+                    });
+                }else{
+                    alert("請輸入要查詢的資料！")
+                }
+            });
+
+            //個人藏書搜尋
+            $("#search_person_books_btn").click(function(){
+                $("#s07_mydata").empty();
+                $("#s07_pageList").empty();
+                $("#s04_search_books").addClass('d-none');
+                $("#s05_book_info").addClass('d-none');
+                $("#go_back").removeClass('d-none');
+                $("#s06_no_book_data_info").addClass('d-none');
+                $("#s07_show_personal_books").removeClass('d-none');
+
+                var dataJSON = {};
+                console.log($(this).data("userid"));
+                dataJSON["ID"] = $(this).data("userid");
+                console.log(JSON.stringify(dataJSON));
+                $.ajax({
+                    type:"POST",
+                    url:"../project/book_Read_personal_list_api.php",
+                    async:false,
+                    data:JSON.stringify(dataJSON),
+                    dataType:"json",
+                    success:showdata_personal_books,
+                    error:function(){
+                        alert("error-../project/book_Read_personal_list_api.php")
+                    }
+                });
+            });
+
+            $("#go_back").click(function(){
+                $("#s04_search_books").removeClass('d-none');
+                $("#s05_book_info").addClass('d-none');
+                $("#go_back").addClass('d-none');
+                $("#s07_show_personal_books").addClass('d-none');
+            });
+
+            //navbar裡面的選單按下後
+            //會員功能=>查詢個人藏書
+            $("#s02_member_btn01").click(function(){
+                $("#s07_mydata").empty();
+                $("#s07_pageList").empty();
+                $("#s04_search_books").addClass('d-none');
+                $("#s05_book_info").addClass('d-none');
+                $("#go_back").removeClass('d-none');
+                $("#s06_no_book_data_info").addClass('d-none');
+                $("#s07_show_personal_books").removeClass('d-none');
+
+                var dataJSON = {};
+                console.log($(this).data("userid"));
+                dataJSON["ID"] = $(this).data("userid");
+                console.log(JSON.stringify(dataJSON));
+                $.ajax({
+                    type:"POST",
+                    url:"../project/book_Read_personal_list_api.php",
+                    async:false,
+                    data:JSON.stringify(dataJSON),
+                    dataType:"json",
+                    success:showdata_personal_books,
+                    error:function(){
+                        alert("error-../project/book_Read_personal_list_api.php")
+                    }
+                });
+            });
+
+            //回上一頁
+            $("#go_back").click(function(){
+                $("#s04_search_books").removeClass('d-none');
+                $("#s05_book_info").addClass('d-none');
+                $("#go_back").addClass('d-none');
+                $("#s07_show_personal_books").addClass('d-none');
+            });
+
+            //監聽查詢書籍資料後的table裡面的新增按鈕 #table_add_to_personal_btn
+            $("body").on("click", "#s05_mydata #table_add_to_personal_btn", function(){
+                console.log("table_add_to_personal_btn is work");
+                console.log($(this).data("userid"));
+                console.log($(this).data("bookid"));
+
+                // $("#").val($(this).data(""));
+                $("#s09_bookid").val($(this).data("bookid"));
+                $("#s09_bookname").val($(this).data("bookname"));
+                $("#s09_author").val($(this).data("author"));
+                $("#s09_translator").val($(this).data("translator"));
+                $("#s09_type").val($(this).data("type"));
+                $("#s09_publisher").val($(this).data("publisher"));
+                $("#s09_publisheddate").val($(this).data("publisheddate"));
+                $("#s09_page").val($(this).data("page"));
+                $("#s09_booklength").val($(this).data("booklength"));
+                $("#s09_bookwidth").val($(this).data("bookwidth"));
+                $("#s09_bookthick").val($(this).data("bookthick"));
+                $("#s09_created_by").val($(this).data("created_by"));
+                $("#s09_created_at").val($(this).data("created_at"));
+
+                $("#s09_buydate").change(function(){
+                    console.log($(this).val());
+                    var selected_buydate = $("#s09_buydate").val();
+                    console.log(selected_buydate);
+                    if(selected_buydate){
+                        flag_buydate =true;
+                        console.log(flag_buydate);
+                    }else{
+                        flag_buydate=false;
+                        console.log(flag_buydate);
+                    }
+                });
+
+                $("#s09_buynum").bind("input propertychange", function(){
+                    console.log($(this).val());
+                    if($(this).val() > 0 && $(this).val() < 1001){
+                        //購買數量符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_buynum = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_buynum = false;
+                    }
+                });
+
+                $("#s09_buyamount").bind("input propertychange", function(){
+                    console.log($(this).val());
+                    if($(this).val() >0 && $(this).val() < 10001){
+                        //購買金額符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_buyamount = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_buyamount = false;
+                    }
+                });
+
+                console.log(readed);
+                $("#s09_readed").change(function(){
+                    console.log($(this).is(':checked'));
+                    if($(this).is(':checked')){
+                        $(this).next().html("<h1 class='text-danger'>已讀</h1>");
+                        readed = '1'; 
+                    }else{
+                        $(this).next().text('未讀！');
+                        readed = '0';
+                    }
+                    console.log(readed);
+                });
+
+                $("body").on("click", "#addToPersonalModal #add_to_personal_modal_ok_btn", function(){
+                    console.log("add_to_personal_modal_ok_btn is working");
+                    console.log(user_id);
+                    console.log($("#s09_bookid").val());
+                    console.log($("#s09_buydate").val());
+                    console.log($("#s09_buynum").val());
+                    console.log($("#s09_buyamount").val());
+                    console.log(readed);
+                    if(flag_buydate && flag_buynum && flag_buyamount){
+                        //console.log("test");
+                        var dataJSON = {};
+                        dataJSON["UserId"] = user_id;
+                        dataJSON["BookId"] = $("#s09_bookid").val();
+                        dataJSON["BuyDate"] = $("#s09_buydate").val();
+                        dataJSON["BuyNum"] = $("#s09_buynum").val();
+                        dataJSON["BuyAmount"] = $("#s09_buyamount").val();
+                        dataJSON["Readed"] = readed;
+
+                        console.log(JSON.stringify(dataJSON));
+
+                        $.ajax({
+                            type:"POST",
+                            url:"../project/book_Creat_personal_info_api.php",
+                            data:JSON.stringify(dataJSON),
+                            dataType:"json",
+                            success:showdata_add_to_personal_book_info,
+                            error:function(){
+                                alert("error-../project/book_Creat_personal_info_api.php")
+                            }
+                        });
+                    }else{
+                        alert("欄位輸入有誤，請修正！")
+                    }
+                });
+            });
+
+            //監聽新增書籍按鈕 #add_new_book_btn
+            $("#add_new_book_btn").click(function(){
+                console.log("add_new_book_btn is working");
+
+                //直接將建檔人員帶入登入者的NickName
+                console.log(nickname);
+                $("#s10_created_by").val(nickname);
+
+                //監聽書籍名稱欄位 #s10_bookname
+                $("#s10_bookname").blur("input propertychange", function(){
+                    console.log($(this).val());
+                    if($(this).val().length > 0){
+                        var dataJSON = {};
+                        dataJSON["BookName"] = $("#s10_bookname").val();
+                        
+                        $.ajax({
+                            type:"POST",
+                            url:"../project/check_book_uni_api.php",
+                            data: JSON.stringify(dataJSON),
+                            dataType:"json",
+                            success:showdata_check_bookname_uni,
+                            error: function(){
+                                alert("error-../project/check_book_uni_api.php")
+                            }
+                        });
+
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_bookname = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        $("#s10_chk_bookname").empty();
+                        $("#s10_chk_bookname").append("字數不符合規定")
+                        flag_bookname = false;
+                    }
+                });
+
+                //監聽作者欄位 #s10_author
+                $("#s10_author").bind("input propertychange", function(){
+                    if($(this).val().length > 0){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_author = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_author = false;
+                    }
+                });
+
+                //監聽譯者欄位 #s10_translator
+                $("#s10_translator").bind("input propertychange", function(){
+                    if($(this).val().length > 0){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_translator = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_translator = false;
+                    }
+                });
+
+                //監聽類型欄位 #s10_type
+                $("#s10_type").bind("input propertychange", function(){
+                    if($(this).val().length > 0){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_type = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_type = false;
+                    }
+                });
+
+                //監聽出版社欄位 #s10_publisher
+                $("#s10_publisher").bind("input propertychange", function(){
+                    if($(this).val().length > 0){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_publisher = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_publisher = false;
+                    }
+                });
+
+                //監聽出版日期 $s10_publiheddate
+                $("#s10_publisheddate").change(function(){
+                    console.log($(this).val());
+                    var selected_publisheddate = $("#s10_publisheddate").val();
+                    console.log(selected_publisheddate);
+                    if(selected_publisheddate){
+                        flag_publisheddate =true;
+                        console.log(flag_publisheddate);
+                    }else{
+                        flag_publisheddate =false;
+                        console.log(flag_publisheddate);
+                    }
+                });
+
+                //監聽頁數欄位 #s10_page
+                $("#s10_page").bind("input propertychange", function(){
+                    if($(this).val() > 0 && $(this).val() < 5001){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_page = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_page = false;
+                    }
+                });
+
+                //監聽長度欄位 #s10_booklength
+                $("#s10_booklength").bind("input propertychange", function(){
+                    if($(this).val() > 0 && $(this).val() < 101){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_booklength = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_booklength = false;
+                    }
+                });
+                
+                //監聽寬度欄位 #s10_bookwidth
+                $("#s10_bookwidth").bind("input propertychange", function(){
+                    if($(this).val() > 0 && $(this).val() < 101){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_bookwidth = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_bookwidth = false;
+                    }
+                });
+                
+                //監聽厚度欄位 #s10_bookthick
+                $("#s10_bookthick").bind("input propertychange", function(){
+                    if($(this).val() > 0 && $(this).val() < 101){
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_bookthick = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_bookthick = false;
+                    }
+                });
+
+                //新增書籍基本資料 #add_book_modal_creat_basic_bookinfo_btn
+                $("#add_book_modal_creat_basic_bookinfo_btn").click(function(){
+                    console.log(flag_bookname);
+                    console.log(flag_author);
+                    console.log(flag_translator);
+                    console.log(flag_type);
+                    console.log(flag_publisher);
+                    console.log(flag_publisheddate);
+                    console.log(flag_page);
+                    console.log(flag_booklength);
+                    console.log(flag_bookwidth);
+                    console.log(flag_bookthick);
+                    if(flag_bookname && flag_author && flag_translator && flag_type && flag_publisher && flag_publisheddate && flag_page && flag_booklength && flag_bookwidth && flag_bookthick){
+
+                        var dataJSON = {};
+                        dataJSON["BookName"] = $("#s10_bookname").val();
+                        dataJSON["Author"] = $("#s10_author").val();
+                        dataJSON["Translator"] = $("#s10_translator").val();
+                        dataJSON["Type"] = $("#s10_type").val();
+                        dataJSON["Publisher"] = $("#s10_publisher").val();
+                        dataJSON["PublishedDate"] = $("#s10_publisheddate").val();
+                        dataJSON["Page"] = $("#s10_page").val();
+                        dataJSON["BookLength"] = $("#s10_booklength").val();
+                        dataJSON["BookWidth"] = $("#s10_bookwidth").val();
+                        dataJSON["BookThick"] = $("#s10_bookthick").val();
+                        dataJSON["Created_by"] = $("#s10_created_by").val();
+
+
+                        $.ajax({
+                            type:"POST",
+                            url:"../project/book_Creat_basic_bookinfo_api.php",
+                            data: JSON.stringify(dataJSON),
+                            dataType:"json",
+                            success:showdata_book_Creat_basic_bookinfo,
+                            error: function(){
+                                alert("error-../project/book_Creat_basic_bookinfo_api.php")
+                            }
+                        });
+
+                        $("#book_persomal_info_empty-tab").removeClass("disabled");
+                        $("#s10_personal_book_info_tabs").removeClass("textcolorR");
+                        $("#s10_personal_book_info_tabs").addClass("textcolorG");
+                    }else{
+                        alert("欄位輸入有誤，請修正！")
+                    }
+                });
+
+                //新增書籍的個人資料 
+                //監聽購買日期 #s10_buydate
+                $("#s10_buydate").change(function(){
+                    console.log($(this).val());
+                    var selected_buydate = $("#s10_buydate").val();
+                    console.log(selected_buydate);
+                    if(selected_buydate){
+                        flag_buydate =true;
+                        console.log(flag_buydate);
+                    }else{
+                        flag_buydate=false;
+                        console.log(flag_buydate);
+                    }
+                });
+
+                //監聽購買數量 #s10_buynum
+                $("#s10_buynum").bind("input propertychange", function(){
+                    console.log($(this).val());
+                    if($(this).val() > 0 && $(this).val() < 1001){
+                        //購買數量符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_buynum = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_buynum = false;
+                    }
+                });
+
+                //監聽購買金額 #s10_buyamount
+                $("#s10_buyamount").bind("input propertychange", function(){
+                    console.log($(this).val());
+                    if($(this).val() >0 && $(this).val() < 10001){
+                        //購買金額符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_buyamount = true;
+                    }else{
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_buyamount = false;
+                    }
+                });
+
+                //監聽是否已讀 #s10_readed
+                console.log(readed);
+                $("#s10_readed").change(function(){
+                    console.log($(this).is(':checked'));
+                    if($(this).is(':checked')){
+                        $(this).next().html("<h1 class='text-danger'>已讀</h1>");
+                        readed = '1'; 
+                    }else{
+                        $(this).next().text('未讀！');
+                        readed = '0';
+                    }
+                    console.log(readed);
+                });
+
+                //監聽新增個人書籍資料 #add_book_modal_creat_personal_bookinfo_btn
+                $("#add_book_modal_creat_personal_bookinfo_btn").click(function(){
+                    console.log(user_id);
+                    console.log(book_id);
+                    console.log($("#s10_buydate").val());
+                    console.log($("#s10_buynum").val());
+                    console.log($("#s10_buyamount").val());
+                    console.log(readed);
+                    if(flag_buydate && flag_buynum && flag_buyamount){
+                        var dataJSON = {};
+                        dataJSON["UserId"] = user_id;
+                        dataJSON["BookId"] = book_id;
+                        dataJSON["BuyDate"] = $("#s10_buydate").val();
+                        dataJSON["BuyNum"] = $("#s10_buynum").val();
+                        dataJSON["BuyAmount"] = $("#s10_buyamount").val();
+                        dataJSON["Readed"] = readed;
+
+                        console.log(JSON.stringify(dataJSON));
+
+                        $.ajax({
+                            type:"POST",
+                            url:"../project/book_Creat_personal_info_api.php",
+                            data:JSON.stringify(dataJSON),
+                            dataType:"json",
+                            success:showdata_add_to_personal_book_info,
+                            error:function(){
+                                alert("error-../project/book_Creat_personal_info_api.php")
+                            }
+                        });
+                    }else{
+                        alert("欄位輸入有誤，請修正！")
+                    }
+                });
+            });
+
+        });
+
+        
+
+
+        //各種function
+
+        //從零新增書籍
+        //想要新增的書名，跟資料庫比對
+        function showdata_check_bookname_uni(data){
+            console.log(data.state);
+            console.log(data.message);
+            if(data.state){
+
+            }else{
+                $("#s10_bookname").removeClass("is-valid");
+                $("#s10_bookname").addClass("is-invalid");
+                $("#s10_chk_bookname").empty();
+                $("#s10_chk_bookname").append("已有類似書籍資料，歡迎查詢後新增為自己的");
+            }
+        }
+
+        //新增基本書籍資料到資料庫
+        function showdata_book_Creat_basic_bookinfo(data){
+            console.log(data);
+            console.log(data.state);
+            console.log(data.data[0].ID);
+            book_id = data.data[0].ID;
+            console.log(user_id);
+            console.log(book_id);
+            if(data.state){
+                alert("書本基本資料已新增，請新增書籍個人資料")
+                // 將使用者的 UserId 跟 BookId 賦值給新增藏書按鈕
+                $("#add_book_modal_creat_personal_bookinfo_btn").attr("data-UserId", user_id);
+                $("#add_book_modal_creat_personal_bookinfo_btn").attr("data-BookId", book_id);
+            }else{
+                alert(data.message);
+            }
+        }
+
+        //一般查詢書籍的function
+        function showdata_booksearch(data){
+            console.log(data);
+            // $("#mydata").empty();
+            // $("#pageList").empty();
+            if(data.data)
+            {
+                s05_newData = []; // Reset newData array
+                
+                data.data.forEach(function(item,key){
+                    console.log(key);
+                    if(key % 5 == 0 ){
+                        s05_newData.push([]);
+                    }
+                    var s05_page = parseInt(key/5);
+                    s05_newData[s05_page].push(item);
+                });
+
+                //產生頁碼
+                $("#s05_pageList").empty();
+                s05_newData.forEach(function(item, key)
+                {
+                    var s05_thisPage = key + 1;
+                    var strHTML = '<li class="page-item"><a id="s05_page_now_'+ key +'" class="page-link" href="#" onclick="drawTable(' + key + ')">' + s05_thisPage + '</a></li>';
+                    $("#s05_pageList").append(strHTML);
+                });
+
+                drawTable(0)
+            }else{
+                $("#s05_book_info").addClass('d-none');
+                $("#s06_no_book_data_info").removeClass('d-none');
+            }  
+        }
+
+        //一般查詢書籍的畫出table
+        function drawTable(s05_page){
+            // console.log(userId);
+            console.log(for_data_userid_use);
+            user_id = for_data_userid_use;
+            $("#s05_mydata").empty();
+            $("#s05_book_info").removeClass('d-none');
+            $("#s06_no_book_data_info").addClass('d-none');
+            s05_newData[s05_page].forEach(function(item){
+                var strHTML = '<tr><td>' + item.BookName + '</td><td>' + item.Author + '</td><td>' + item.Translator + '</td><td>' + item.Type + '</td><td>' + item.Publisher + '</td><td class="text-center"><button class="btn btn-success" id="table_add_to_personal_btn" data-bs-toggle="modal" data-bs-target="#addToPersonalModal" data-UserId="' + user_id + '" data-BookId="' + item.ID + '" data-BookName="' + item.BookName + '" data-Author="' + item.Author + '" data-Translator="' + item.Translator + '" data-Type="' + item.Type + '" data-Publisher="' + item.Publisher + '" data-PublishedDate="' + item.PublishedDate + '" data-Page="' + item.Page + '" data-BookLength="' + item.BookLength + '" data-BookWidth="' + item.BookWidth + '" data-BookThick="' + item.BookThick + '" data-Created_by="' + item.Created_by + '" data-Created_at="' + item.Created_at + '">新增</button></td></tr>';
+                
+                $("#s05_mydata").append(strHTML);
+            });
+
+            $(".page-link").removeClass('active');
+            var s05_page_now = "#s05_page_now_"+ s05_page;
+            // console.log(page_now);
+            $(s05_page_now).addClass('active');         
+        }
+
+        //從查詢出來的書籍資料新增到個人藏書
+        function showdata_add_to_personal_book_info(data){
+            console.log(data);
+            if(data.state){
+                alert(data.message);
+                location.href="../project/book_index_login.html";
+            }else{
+                alert(data.message);
+            }
+        }
+
+        //個人所有藏書列表的function
+        function showdata_personal_books(data){
+            console.log(data);
+            if(data.data)
+            {
+                s07_newData = []; // Reset newData array
+                
+                data.data.forEach(function(item,key){
+                    console.log(key);
+                    if(key % 5 == 0 ){
+                        s07_newData.push([]);
+                    }
+                    var s07_page = parseInt(key/5);
+                    s07_newData[s07_page].push(item);
+                });
+
+                //產生頁碼
+                $("#s07_pageList").empty();
+                s07_newData.forEach(function(item, key)
+                {
+                    console.log(key);
+                    var s07_thisPage = key + 1;
+                    var strHTML = '<li class="page-item"><a id="s07_page_now_'+ key +'" class="page-link s07_page_link" href="#" onclick="drawTable_personal(' + key + ')">' + s07_thisPage + '</a></li>';
+                    $("#s07_pageList").append(strHTML);
+                });
+
+                drawTable_personal(0)
+            }else{
+                $("#s07_show_personal_books").addClass('d-none');
+                $("#s08_no_personal_book_data_info").removeClass('d-none');
+            }
+        }
+
+        //個人所有藏書列表的畫出table
+        function drawTable_personal(s07_page){
+            $("#s07_mydata").empty();
+            $("#s07_show_personal_books").removeClass('d-none');
+            $("#s08_no_personal_book_data_info").addClass('d-none');
+            s07_newData[s07_page].forEach(function(item){
+                var strHTML = '<tr><td>' + item.BookName + '</td><td>' + item.Author + '</td><td>' + item.Translator + '</td><td>' + item.Type + '</td><td>' + item.Publisher + '</td><td>' + item.BuyDate + '</td><td class="text-center"><button class="btn btn-primary">查看</button></td>';
+
+                $("#s07_mydata").append(strHTML);
+            });
+
+            $(".s07_page_link").removeClass('active');
+            var s07_page_now = "#s07_page_now_"+ s07_page;
+            // console.log(page_now);
+            $(s07_page_now).addClass('active');         
+        }
+
+    </script>
+</body>
+</html>

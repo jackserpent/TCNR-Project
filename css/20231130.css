@@ -1,0 +1,124 @@
+body {
+  background-color: var(--mycolor01);
+  padding-top: 30px;
+  /*body內部的原件距離他的距離*/
+}
+
+.wrapper {
+  width: 1024px;
+  /*控制wrapper的大小*/
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin是與外部的距離*/
+}
+
+nav {
+  background-color: var(--mycolor02);
+  text-align: center;
+}
+
+nav ul {
+  display: inline-block;
+  /**/
+}
+
+nav ul li {
+  list-style-type: none;
+  /*控制原本那個自帶的．的樣式，選擇none是去掉li自帶的那個點*/
+  float: left;
+  /*將原本直著排列下來的項目變成橫式*/
+}
+
+nav ul li a {
+  display: block;
+  /*給超連結一個方塊*/
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  /*超連結方塊與內部的東西的距離*/
+  background-color: var(--mycolor03);
+  /*給超連結方塊一個背景色，較好辨認出位置 */
+  margin-right: 5px;
+  text-decoration: none;
+  /*把超連結的底線去掉*/
+  color: var(--mycolor06);
+  /*字體顏色*/
+  /* font-weight: 900; 字體粗細 */
+}
+
+nav ul li a:hover {
+  /*hover：當滑鼠移到上面的時候會有顯示的效果*/
+  background-color: var(--mycolor04);
+}
+
+.content_in01 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
+  background-color: var(--mycolor05);
+  margin-top: 10px;
+}
+
+.content_in01 h1 {
+  color: var(--white);
+  text-align: center;
+  /* font-weight: bolder; */
+}
+
+.content_in01 p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  /* font-weight: bolder; */
+}
+
+.content_in01 a {
+  display: block;
+  /*給超連結一個方塊*/
+  width: 100px;
+  height: 40px;
+  /*自訂方塊的寬度跟高度*/
+  background-color: var(--mycolor03);
+  color: var(--white);
+  /* font-weight: bolder; */
+  text-align: center;
+  /*超連結字的位置置中*/
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  line-height: 40px;
+  /*垂直置中，要跟方塊的高度一樣*/
+}
+
+.footer {
+  background-color: var(--mycolor04);
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* padding-left: auto; */
+  /* padding-right: auto; */
+}
+
+.footer p {
+  color: var(--white);
+  /* font-weight: bolder; */
+  font-size: 30px;
+  /* padding-top: 100px; */
+}
+
+@media screen and (max-width:1024px) {
+  .wrapper {
+    width: 100%;
+  }
+}
+
+/*當螢幕寬度超過1024的時候維持原本的版型，小於1024的時候讓它呈現100%的滿版*/
