@@ -59,7 +59,8 @@
 
 - Bootstrap v5.2.3
 - jQuery v3.7.1
-- jQuery UI - v1.13.2
+- wow.js
+- animate v.4.0.0
 - Chart.js v4.4.2
 - AdminLTE v3.2.0
 
