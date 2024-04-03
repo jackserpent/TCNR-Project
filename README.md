@@ -61,8 +61,7 @@
 - jQuery v3.7.1
 - wow.js
 - animate v.4.0.0
-- Chart.js v4.4.2
-- AdminLTE v3.2.0
+
 
 ## 使用簡介
 1. 無須註冊或登入，也可以查詢目前資料庫內由其他使用者建立的書籍資料
